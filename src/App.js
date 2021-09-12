@@ -14,6 +14,9 @@ import NotFound from './components/views/NotFound/NotFound';
 import parseTrips from './utils/parseTrips';
 import {setMultipleStates} from './redux/globalRedux';
 
+import Regions from './components/views/Regions/Regions';
+import Countries from './components/views/Countries/Countries';
+
 class App extends React.Component {
   static propTypes = {
     trips: PropTypes.array,
@@ -41,6 +44,8 @@ class App extends React.Component {
             <Route exact path='/' component={Home} />
             <Route exact path='/trips' component={Trips} />
             {/* TODO - add more routes for other views */}
+            <Route exact path='/countries' component={Countries} />
+            <Route exact path='/regions' component={Regions} />
             <Route exact path='/info' component={Info} />
             <Route path='*' component={NotFound} />
           </Switch>
