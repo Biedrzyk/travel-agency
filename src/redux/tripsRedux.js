@@ -21,7 +21,7 @@ export const getFilteredTrips = ({trips, filters}) => {
 };
 
 export const getTripById = ({trips}, tripId) => {
-  const filtered = trips.filter(trips => trips.tripId === tripId);
+  const filtered = trips.filter(trip => trip.tripId === tripId);
 
   // TODO - filter trips by tripId
 
