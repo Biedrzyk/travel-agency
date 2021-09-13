@@ -11,6 +11,7 @@ const createActionName = name => `app/${reducerName}/${name}`;
 // action types
 export const CHANGE_PHRASE = createActionName('CHANGE_PHRASE');
 // TODO - add other action types
+export const CHANGE_DURATION = createActionName('CHANGE_DURATION')
 
 // action creators
 export const changeSearchPhrase = payload => ({ payload, type: CHANGE_PHRASE });
@@ -24,6 +25,11 @@ export default function reducer(statePart = [], action = {}) {
         ...statePart,
         searchPhrase: action.payload,
       };
+      case CHANGE_DURATION:
+        return {
+          ...statePart,
+          duration: action.payload,
+        };
     // TODO - handle other action types
     default:
       return statePart;
