@@ -28,7 +28,10 @@ export default function reducer(statePart = [], action = {}) {
       case CHANGE_DURATION:
         return {
           ...statePart,
-          duration: action.payload,
+          duration: {
+          ...statePart.duration,
+          ...action.payload,
+          },
         };
     // TODO - handle other action types
     default:
