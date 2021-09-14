@@ -13,7 +13,7 @@ import NotFound from './components/views/NotFound/NotFound';
 import Regions from './components/views/Regions/RegionsContainer';
 import Countries from './components/views/Countries/CountriesContainer';
 import Country from './components/views/Country/CountryContainer'
-import {AnimatedSwitch} from 'react-router-transition';
+import { AnimatedSwitch } from 'react-router-transition';
 import styles from './App.scss'
 
 import parseTrips from './utils/parseTrips';
@@ -44,9 +44,12 @@ class App extends React.Component {
       <BrowserRouter>
         <MainLayout>
           <AnimatedSwitch
-            atEnter={{ opacity: 0, top: 200}}
-            atLeave={{ opacity: 0, top: 200}}
-            atActive={{ opacity: 1, top: 0}}
+            atEnter={{ offset: -120/*, opacity: 0, top: 200 */ }}
+            atLeave={{ offset: -120/*, opacity: 0, top: 200 */}}
+            atActive={{ offset: 0/*, opacity: 1, top: 200*/ }}
+            mapStyles={(styles) => ({
+              transform: `translateY(${styles.offset}%)`,
+            })}
             className={styles.switchWrapper}
           >
             <Route exact path='/' component={Home} />
@@ -74,3 +77,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+/*atEnter={{ opacity: 0, top: 200}}
+atLeave={{ opacity: 0, top: 200}}
+atActive={{ opacity: 1, top: 0}}
+className={styles.switchWrapper}*/
