@@ -20,8 +20,8 @@ export const REMOVE_TAG = createActionName('REMOVE_TAG');
 // action creators
 export const changeSearchPhrase = payload => ({ payload, type: CHANGE_PHRASE });
 // TODO - add other action creators
-export const addtag = payload => ({ payload, type: ADD_TAG});
-export const removetag = payload => ({ payload, type: REMOVE_TAG});
+export const addTag = payload => ({ payload, type: ADD_TAG});
+export const removeTag = payload => ({ payload, type: REMOVE_TAG});
 export const changeDuration = payload => ({ payload, type: CHANGE_DURATION});
 
 // reducer
