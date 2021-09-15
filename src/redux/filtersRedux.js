@@ -22,7 +22,9 @@ export const changeSearchPhrase = payload => ({ payload, type: CHANGE_PHRASE });
 // TODO - add other action creators
 export const addTag = payload => ({ payload, type: ADD_TAG});
 export const removeTag = payload => ({ payload, type: REMOVE_TAG});
-export const changeDuration = payload => ({ payload, type: CHANGE_DURATION});
+export const changeDuration = (type, value) => ({ 
+  payload: {[type]: value}, 
+  type: CHANGE_DURATION });
 
 // reducer
 export default function reducer(statePart = [], action = {}) {

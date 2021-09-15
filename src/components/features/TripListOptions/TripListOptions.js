@@ -78,6 +78,7 @@ TripListOptions.propTypes = {
   changeSearchPhrase: PropTypes.func,
   addTag: PropTypes.func,
   removeTag: PropTypes.func,
+  changeDuration: PropTypes.func,
 };
 
 export default TripListOptions;
