@@ -13,7 +13,7 @@ import ListItem from '../../common/ListItem/ListItem';
 
 import styles from './Trip.module.scss';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import OrderForm from '../../features/OrderForm/OrderForm.js';
+import OrderForm from '../../features/OrderForm/OrderFormContainer.js';
 
 const Trip = ({ error, name, image, cost, days, description, country, intro }) => {
   if (error) return <NotFound />;
