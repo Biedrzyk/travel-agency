@@ -5,10 +5,10 @@ import {formatPrice} from '../../../utils/formatPrice';
 
 
 
-export const OrderOptionNumber = (currentValue, limits, setOptionValue, price) => {
+export const OrderOptionNumber = ({currentValue, limits, setOptionValue, price}) => (
     <div className={styles.number}>
       <input
-      className={styles.input}
+      className={styles.inputSmall}
       type='number'
       value={currentValue}
       min={limits.min}
@@ -17,7 +17,7 @@ export const OrderOptionNumber = (currentValue, limits, setOptionValue, price) =
       >
       </input> {` Price: ${formatPrice(price)}`}
     </div>
-  };
+  );
 
   OrderOptionNumber.propTypes = {
     limits: PropTypes.object,
