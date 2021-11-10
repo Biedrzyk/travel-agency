@@ -10,7 +10,7 @@ const newValueSet = ({currentValue, id, checked}) => {
       id,
     ];
   } else {
-    return currentValue.filter(value => value !== id);
+    return currentValue.filter(value => value != id);
   }
 };
 
@@ -24,7 +24,7 @@ export const OrderOptionCheckboxes = ({values, currentValue, setOptionValue}) =>
           checked={currentValue.includes(value.id)}
           onChange={event => setOptionValue(newValueSet(currentValue, value.id, event.currentTarget.checked))}
         >
-        </input> {`${value.name} (${formatPrice(value.price)})`}
+        </input> {value.name}{formatPrice(value.price)}
       </label>
     ))}
   </div>
