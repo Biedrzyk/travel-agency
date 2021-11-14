@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { OrderOptionDropdown } from './OrderOptionDropdown';
 import { OrderOptionIcons } from './OrderOptionIcons';
 import { OrderOptionCheckboxes } from './OrderOptionCheckboxes';
-import { OrderOptionNumber } from './OrderOptionNumber';
+import { OrderOptionNumber }from './OrderOptionNumber';
 
 const optionTypes = {
     dropdown: OrderOptionDropdown,
