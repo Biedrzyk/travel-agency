@@ -13,6 +13,8 @@ const optionTypes = {
     icons: OrderOptionIcons,
     checkboxes: OrderOptionCheckboxes,
     number: OrderOptionNumber,
+    text: OrderOptionText,
+    date: OrderOptionDate,
   };
 
   export const OrderOption = ({name, type, id, setOrderOption, ...otherProps}) => {
