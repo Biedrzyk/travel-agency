@@ -26,9 +26,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test jest --colors",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src/",
+    "test": "jest --colors",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --colors"
   },
