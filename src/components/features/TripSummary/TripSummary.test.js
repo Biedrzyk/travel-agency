@@ -58,6 +58,11 @@ describe('Component TripSummary', () => {
     const component = shallow(<TripSummary />);
 
     expect(component.find('.tag').exists()).toEqual(false);
-    //console.log(component.debug());
+    console.log(component.debug());
+
+    //const voidArray = [];
+    //const component = shallow(<TripSummary tags={voidArray} />);       // wersja druga
+    //expect(component.exists('.tags')).toEqual(false);
+
   });
 });
