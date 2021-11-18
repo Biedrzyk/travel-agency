@@ -10,7 +10,7 @@ describe('Component TripSummary', () => {
       name='bobo' 
       cost='$200'
       days={7}
-      tags={[]}
+      tags={['baba','bebe','lala']}
     />);
     expect(component).toBeTruthy();
   });
@@ -41,5 +41,23 @@ describe('Component TripSummary', () => {
     expect(component.find('.details').childAt(1).text()).toEqual(`from ${expectedPropCost}`);
   });
 
-  
+  it('should render correct array in tags', () => {
+    const firstElArray = 'biba';
+    const secondElArray = 'bobo';
+    const thirdElArray = 'lolo';
+    const expectedArray = [firstElArray, secondElArray, thirdElArray];
+    const component = shallow(<TripSummary tags={expectedArray} />);
+
+    expect(component.find('.tag').at(0).text()).toEqual(expectedArray[0]);
+    expect(component.find('.tag').at(1).text()).toEqual(expectedArray[1]);
+    expect(component.find('.tag').at(2).text()).toEqual(expectedArray[2]);
+    //console.log(component.debug());
+  });
+
+  it('should not render tags if tags is not exist', () => {
+    const component = shallow(<TripSummary />);
+
+    expect(component.find('.tag').exists()).toEqual(false);
+    //console.log(component.debug());
+  });
 });

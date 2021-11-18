@@ -33,7 +33,7 @@ TripSummary.propTypes = {
   intro: PropTypes.string,
   cost: PropTypes.string,
   days: PropTypes.number,
-  tags: PropTypes.array.isRequired,
+  tags: PropTypes.array,
 };
 
 export default TripSummary;
