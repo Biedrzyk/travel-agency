@@ -25,4 +25,15 @@ describe('Component TripSummary', () => {
     expect(component.find('img').prop('src')).toEqual(expectedImage);
     expect(component.find('img').prop('alt')).toEqual(expectedAlt);
   });
+
+  it('should render correct props: name, cost, days', () => {
+    const expectedPropName = 'rainbow';
+    const expectedPropCost = '$999';
+    const expectedPropDays = 4;
+    const component = shallow(<TripSummary name={expectedPropName} days={expectedPropDays} cost={expectedPropCost} />);
+
+    expect(component.find('.title').text()).toEqual(expectedPropName);
+    expect(component.find('.details').childAt(0).text()).toEqual(`${expectedPropDays} days`);
+    expect(component.find('.details').childAt(1).text()).toEqual(`from ${expectedPropCost}`);
+  });
 });

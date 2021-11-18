@@ -5,15 +5,15 @@ import {calculateTotal} from '../../../utils/calculateTotal';
 import {formatPrice} from '../../../utils/formatPrice';
 
 const OrderSummary = ({tripCost, tripOptions}) => (
-    <h2 className={styles.component}>
+  <h2 className={styles.component}>
         Total: <strong>{formatPrice(calculateTotal(tripCost, tripOptions))}</strong>   {/* remember about JSX!!!*/}
-    </h2>
+  </h2>
 );
 
 OrderSummary.propTypes = {
-    tripCost: PropTypes.string,
-    tripOptions: PropTypes.object,
-  };
+  tripCost: PropTypes.string,
+  tripOptions: PropTypes.object,
+};
 
 
 export default OrderSummary;

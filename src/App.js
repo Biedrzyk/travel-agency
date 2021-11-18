@@ -13,9 +13,9 @@ import NotFound from './components/views/NotFound/NotFound';
 import Regions from './components/views/Regions/RegionsContainer';
 import Countries from './components/views/Countries/CountriesContainer';
 import Trip from './components/views/Trip/TripContainer';
-import Country from './components/views/Country/CountryContainer'
+import Country from './components/views/Country/CountryContainer';
 import { AnimatedSwitch } from 'react-router-transition';
-import styles from './App.module.scss'
+import styles from './App.module.scss';
 
 import parseTrips from './utils/parseTrips';
 import { setMultipleStates } from './redux/globalRedux';
