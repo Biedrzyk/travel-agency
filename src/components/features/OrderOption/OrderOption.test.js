@@ -3,9 +3,10 @@ import { shallow } from 'enzyme';
 import { OrderOption } from './OrderOption';
 
 describe('Component OrderOption', () => {
-    
+  const expectedName = 'Lorem ipsum';
+  const expectedType = 'Ipsum lorem';
   it('should render without crashing', () => {
-    const component = shallow(<OrderOption type='lolo' name='bobo' />);
+    const component = shallow(<OrderOption name={expectedName} type={expectedType} />);
     expect(component).toBeTruthy();
     console.log(component.debug());
   });
@@ -16,10 +17,7 @@ describe('Component OrderOption', () => {
   });
 
   it('should have title from props name', () => {
-    const expectedName = 'Lorem ipsum';
-    const expectedType = 'Ipsum lorem';
     const component = shallow(<OrderOption name={expectedName} type={expectedType} />);
-  
     expect(component.find('.title').text()).toEqual(expectedName);
   });
 
