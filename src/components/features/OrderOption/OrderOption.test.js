@@ -3,8 +3,8 @@ import { shallow } from 'enzyme';
 import { OrderOption } from './OrderOption';
 
 describe('Component OrderOption', () => {
-  const expectedName = 'Lorem ipsum';
-  const expectedType = 'Ipsum lorem';
+  const expectedName = 'Lorem';
+  const expectedType = 'text';
   it('should render without crashing', () => {
     const component = shallow(<OrderOption name={expectedName} type={expectedType} />);
     expect(component).toBeTruthy();
