@@ -78,6 +78,9 @@ for(let type in optionTypes){
       renderedSubcomponent = subcomponent.dive();
     });
     /* common tests */
+    it('passes dummy test', () => {
+      expect(1).toBe(1);
+    });
     it(`renders ${optionTypes[type]}`, () => {
       expect(subcomponent).toBeTruthy();
       expect(subcomponent.length).toBe(1);
@@ -104,6 +107,10 @@ for(let type in optionTypes){
           expect(mockSetOrderOption).toBeCalledTimes(1);
           expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValue });
         });
+        break;
+      }
+      case 'number': {
+
         break;
       }
     }
