@@ -168,6 +168,25 @@ for(let type in optionTypes){
         });
         break;
       }
+      
+      case 'checkboxes': {
+        it('contains input with correct props', () => {
+          const element = renderedSubcomponent.find('.checkboxes');
+          expect(element.length).toBe(2);
+          expect(element.find('Icon').at(0).prop('name')).toBe(
+            mockProps.values[0].icon
+          );
+        });
+
+        it('should run setOrderOption function on click', () => {
+          renderedSubcomponent.find('div .icon').at(1).simulate('click');
+          expect(mockSetOrderOption).toBeCalledTimes(1);
+          expect(mockSetOrderOption).toBeCalledWith({
+            [mockProps.id]: testValue,
+          });
+        });
+        break;
+      }
     }
   });
 }
