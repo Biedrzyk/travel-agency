@@ -203,14 +203,12 @@ for(let type in optionTypes){
       case 'date': {
         it('contains component DataPicker', () => {
           const element = renderedSubcomponent.find(DatePicker);
-          expect(element.length).toBe(2);
-          expect(element.find('Icon').at(0).prop('name')).toBe(
-            mockProps.values[0].icon
-          );
+          expect(element.length).toBe(1);
         });
 
-        it('should run setOrderOption function on click', () => {
-          renderedSubcomponent.find('div .icon').at(1).simulate('click');
+        it('should run setOrderOption function on change', () => {
+          const element = renderedSubcomponent.find(DatePicker);
+          element.simulate('change', testValue);
           expect(mockSetOrderOption).toBeCalledTimes(1);
           expect(mockSetOrderOption).toBeCalledWith({
             [mockProps.id]: testValue,
