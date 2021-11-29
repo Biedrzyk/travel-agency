@@ -36,7 +36,7 @@ const sendOrder = (options, tripCost) => {
     });
 };
 
-const OrderForm = ({ tripCost, options, setOrderOption }) => (
+const OrderForm = ({ tripCost, options, setOrderOption, tripName, countryCode }) => (
   <Grid>
     <Row>
       {pricing.map((option) => (
@@ -52,7 +52,7 @@ const OrderForm = ({ tripCost, options, setOrderOption }) => (
         <OrderSummary tripCost={tripCost} tripOptions={options} />
       </Col>
     </Row>
-    <Button onClick={() => sendOrder(options, tripCost)}>Order now!</Button>
+    <Button onClick={() => sendOrder(options, tripCost, tripName, countryCode )}>Order now!</Button>
   </Grid>
 );
 
@@ -60,6 +60,8 @@ OrderForm.propTypes = {
   tripCost: PropTypes.string,
   options: PropTypes.node,
   setOrderOption: PropTypes.node,
+  tripName: PropTypes.string,
+  countryCode: PropTypes.string,
 };
 
 export default OrderForm;
