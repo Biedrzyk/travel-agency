@@ -9,14 +9,14 @@ import { formatPrice } from '../../../utils/formatPrice';
 import settings from '../../../data/settings';
 import Button from '../../common/Button/Button';
 
-const sendOrder = (options, tripCost, tripName, countryCode) => {
+const sendOrder = (options, tripCost,tripId, tripName, countryCode) => {
   const totalCost = formatPrice(calculateTotal(tripCost, options));
 
   const payload = {
     ...options,
     totalCost,
     tripName,
-    //tripId,
+    tripId,
     countryCode,
   };
 
@@ -42,12 +42,12 @@ const sendOrder = (options, tripCost, tripName, countryCode) => {
   }
 };
 
-const OrderForm = ({ tripCost, options, setOrderOption, tripName, countryCode }) => (
+const OrderForm = ({ tripCost, options, setOrderOption, tripName, countryCode, tripId }) => (
   <Grid>
     <Row>
       {pricing.map((option) => (
         <Col md={4} key={option.id}>
-          <OrderOption
+          <OrderOption key={option.name}
             {...option}
             currentValue={options[option.id]}
             setOrderOption={setOrderOption}
@@ -58,7 +58,7 @@ const OrderForm = ({ tripCost, options, setOrderOption, tripName, countryCode })
         <OrderSummary tripCost={tripCost} tripOptions={options} />
       </Col>
     </Row>
-    <Button onClick={() => sendOrder(options, tripCost, tripName, countryCode )}>Order now!</Button>
+    <Button onClick={() => sendOrder(options, tripCost, tripName, countryCode, tripId )}>Order now!</Button>
   </Grid>
 );
 
@@ -68,6 +68,7 @@ OrderForm.propTypes = {
   setOrderOption: PropTypes.node,
   tripName: PropTypes.string,
   countryCode: PropTypes.string,
+  tripId: PropTypes.string,
 };
 
 export default OrderForm;
