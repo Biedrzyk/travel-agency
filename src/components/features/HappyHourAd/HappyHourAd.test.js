@@ -30,21 +30,30 @@ describe('Component HappyHourAd', () => {
   });
 });
 
-describe('Component HappyHourAd with mocked Date', () => {
-  const customDate = '2019-05-14T11:57:58.135Z';
+const trueDate = Date;
 
-  const mockDate = class extends Date {
-    constructor(...args) {
-      if(args.length){
-        super(...args);
-      } else {
-        super(customDate);
-      }
-      return this;
+const mockDate = customDate => class extends Date {
+  constructor(...args) {
+    if(args.length){
+      super(...args);
+    } else {
+      super(customDate);
     }
-    static now(){
-      return (new Date(customDate)).getTime();
-    }
-  };
-  global.Date = mockDate;
+    return this;
+  }
+  static now(){
+    return (new Date(customDate)).getTime();
+  }
+};
+
+describe('Component HappyHourAd with mocked Date', () => {
+  it('should show correct at 11:57:58', () => {
+    global.Date = mockDate('2019-05-14T11:57:58.135Z');
+  
+    const component = shallow(<HappyHourAd {...mockProps} />);
+    const renderedTime = component.find(select.promoDescription).text();
+    expect(renderedTime).toEqual('122');
+  
+    global.Date = trueDate;
+  });
 });
