@@ -48,7 +48,7 @@ const mockDate = customDate => class extends Date {
 
 const checkDescriptionAtTime = (time, expectedDescription) => {
   it(`should show correct at ${time}`, () => {
-    global.Date = mockDate(`2019-05-14T${time}.135Z`);
+    global.Date = mockDate(`2022-01-08T${time}.135Z`);
   
     const component = shallow(<HappyHourAd {...mockProps} />);
     const renderedTime = component.find(select.promoDescription).text();
@@ -66,15 +66,15 @@ describe('Component HappyHourAd with mocked Date', () => {
 
 const checkDescriptionAfterTime = (time, delaySeconds, expectedDescription) => {
   it(`should show correct value ${delaySeconds} seconds after ${time}`, () => {
-    global.Date = mockDate(`2021-08-12T${time}.135Z`);
+    global.Date = mockDate(`2022-01-08T${time}.135Z`);
     jest.useFakeTimers();
     const component = shallow(<HappyHourAd {...mockProps} />);
-    const newTime = new Date(); // zmokowana data z linijki 82.
+    const newTime = new Date(); 
     newTime.setSeconds(newTime.getSeconds() + delaySeconds);
     global.Date = mockDate(newTime.getTime());
     jest.advanceTimersByTime(delaySeconds * 1000);
 
-    const renderedTime = component.find(select.descr).text();
+    const renderedTime = component.find(select.promoDescription).text();
     expect(renderedTime).toEqual(expectedDescription);
 
     global.Date = trueDate;
