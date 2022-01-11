@@ -5,15 +5,10 @@ import DaysToSummer from './DaysToSummer';
 const select = {
   title: '.summerDays',
 };
-  
-const mockProps = {
-  days: '340 days to summer!',
-};
 
-beforeAll(() => {
-  const utilsModule = jest.requireActual('../../../utils/formatTime.js');
-  utilsModule.formatTime = jest.fn(days => days);
-});
+const mockProps = {
+  days: 'days',
+};
 
 describe('Component DaysToSummer', () => {
 
@@ -21,50 +16,38 @@ describe('Component DaysToSummer', () => {
     const component = shallow(<DaysToSummer />);
     expect(component).toBeTruthy();
   });
-
   it('should have h3 with class summerDays', () => {
     const component = shallow(<DaysToSummer />);
     expect(component.exists(select.title)).toEqual(true);
   });
 
-  it('should have props title', () => {
-    const component = shallow(<DaysToSummer {...mockProps}/>);
-    const expectedTitle = mockProps.days;
+  describe('Component DaysToSummer with mocked Date', () => {
+    const customDate = '2021-08-01';
+    const trueDate = Date;
 
-    expect(component.find(select.title).text()).toEqual(expectedTitle);
-  });
-
-  const trueDay = Date;
-
-  const mockDay = customDay => class extends Date {
-    constructor(...args) {
-      if (args.length) {
-        super(...args);
-      } else {
-        super(customDay);
+    const mockDate = class extends Date {
+      constructor(...args) {
+        if (args.length) {
+          super(...args);
+        } else {
+          super(customDate);
+        }
+        return this;
       }
-      return this;
-    }
-    static now() {
-      return (new Date(customDay)).getUTCDate();
-    }
-  };
+      static now() {
+        console.log((new Date(customDate)).getTime());
+        return (new Date(customDate)).getTime();
+      }
+    };
 
-  const checkDescriptionAtDay = (day, expectedDescription) => {
-    it(`should show correct at ${day}`, () => {
-      global.Date = mockDay(`2021-08-${day}`);
+    it('should show correct at 2021-08-01', () => {
+      global.Date = mockDate;
 
-      const component = shallow(<DaysToSummer />);
-      const renderedDay = component.find('days').text();
-      expect(renderedDay).toEqual(expectedDescription);
+      const component = shallow(<DaysToSummer {...mockProps} />);
+      const renderedTime = component.find(select.title).text();
+      expect(renderedTime).toEqual('324 days to summer!');
 
-      global.Date = trueDay;
+      global.Date = trueDate;
     });
-  };
-
-  describe('Component DaysToSummer with mocked Day', () => {
-    checkDescriptionAtDay('2021-08-12', '2021-08-12');
   });
-
 });
-

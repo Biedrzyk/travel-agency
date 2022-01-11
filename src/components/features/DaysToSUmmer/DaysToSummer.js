@@ -22,13 +22,13 @@ class DaysToSummer extends React.Component {
 
         return (
           <div className={styles.component}>
-            <h3 className={styles.summerDays}>{days}{this.props.title}</h3>
+            <h3 className={styles.summerDays}>{days}</h3>
           </div>
         );
       }
       getCountdownDay() {
         const currentDay = new Date();
-        const summerDay = new Date('July 21, 2022');
+        const summerDay = new Date('2022-06-21');
         const msPerDay = 24 * 60 * 60 * 1000;
         const timeLeft = (summerDay.getTime() - currentDay.getTime());
         const e_daysLeft = timeLeft / msPerDay;
