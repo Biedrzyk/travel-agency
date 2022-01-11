@@ -16,11 +16,13 @@ describe('Component DaysToSummer', () => {
     const component = shallow(<DaysToSummer />);
     expect(component).toBeTruthy();
   });
+
   it('should have h3 with class summerDays', () => {
     const component = shallow(<DaysToSummer />);
     expect(component.exists(select.title)).toEqual(true);
   });
 });
+
 
 const trueDate = Date;
 
@@ -34,6 +36,7 @@ const mockDate = customDate => class extends Date {
     return this;
   }
   static now() {
+    console.log((new Date(customDate)).getTime());
     return (new Date(customDate)).getTime();
   }
 };
@@ -41,11 +44,11 @@ const mockDate = customDate => class extends Date {
 const checkDescriptionAtDay = (day, expectedDescription) => {
   it(`should show correct at ${day}`, () => {
     global.Date = mockDate(`${day}`);
- 
+
     const component = shallow(<DaysToSummer {...mockProps} />);
     const renderedTime = component.find(select.title).text();
     expect(renderedTime).toEqual(expectedDescription);
-  
+
     global.Date = trueDate;
   });
 };
@@ -55,10 +58,10 @@ describe('Component DaysToSummer with mocked Date', () => {
   checkDescriptionAtDay('2021-11-10', '223 days to summer!');
   checkDescriptionAtDay('2021-12-30', '173 days to summer!');
   checkDescriptionAtDay('2021-06-20', '1 day to summer!');
-  checkDescriptionAtDay('2021-06-22', ''); 
-  checkDescriptionAtDay('2021-09-20', ''); 
-  checkDescriptionAtDay('2021-08-20', ''); 
-  checkDescriptionAtDay('2021-06-01', '20 days to summer!'); 
-  checkDescriptionAtDay('2021-05-04', '48 days to summer!'); 
-  checkDescriptionAtDay('2021-01-14', '158 days to summer!'); 
+  checkDescriptionAtDay('2021-06-22', '');
+  checkDescriptionAtDay('2021-09-20', '');
+  checkDescriptionAtDay('2021-08-20', '');
+  checkDescriptionAtDay('2021-06-01', '20 days to summer!');
+  checkDescriptionAtDay('2021-05-04', '48 days to summer!');
+  checkDescriptionAtDay('2021-01-14', '158 days to summer!');
 });

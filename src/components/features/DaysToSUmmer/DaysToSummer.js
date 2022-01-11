@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './DaysToSummer.scss';
+import styles from './DaysToSummer.module.scss';
 
 class DaysToSummer extends React.Component {
 
