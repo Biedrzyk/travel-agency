@@ -38,15 +38,23 @@ const mockDate = customDate => class extends Date {
   }
 };
 
-describe('Component DaysToSummer with mocked Date', () => {
-  it('should show correct at 2021-09-25', () => {
-    global.Date = mockDate('2021-09-25');
+const checkDescriptionAtDay = (day, expectedDescription) => {
+  it(`should show correct at ${day}`, () => {
+    global.Date = mockDate(`${day}`);
  
     const component = shallow(<DaysToSummer {...mockProps} />);
     const renderedTime = component.find(select.title).text();
-    expect(renderedTime).toEqual('269 days to summer!');
+    expect(renderedTime).toEqual(expectedDescription);
   
     global.Date = trueDate;
   });
-  global.Date = trueDate;
+};
+
+describe('Component DaysToSummer with mocked Date', () => {
+  checkDescriptionAtDay('2021-06-22', ''); 
+  checkDescriptionAtDay('2021-09-20', ''); 
+  checkDescriptionAtDay('2021-08-20', ''); 
+  checkDescriptionAtDay('2021-06-01', '20 days to summer!'); 
+  checkDescriptionAtDay('2021-05-04', '48 days to summer!'); 
+  checkDescriptionAtDay('2021-01-14', '158 days to summer!'); 
 });
