@@ -13,7 +13,7 @@ class DaysToSummer extends React.Component {
     }
     
       static defaultProps = {
-        title: '21 days to summer!',
+        title: 'days to summer!',
       };
     
       render() {
