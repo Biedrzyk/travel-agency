@@ -11,38 +11,35 @@ class DaysToSummer extends React.Component {
     static propTypes = {
       title: PropTypes.string,
     }
-    
-      static defaultProps = {
-        title: ' ',
-      };
-    
-      render() {
-    
-        const days = this.getCountdownDay();
 
-        return (
-          <div className={styles.component}>
-            <h3 className={styles.summerDays}>{days}</h3>
-          </div>
-        );
+    
+    render() {
+    
+      const days = this.getCountdownDay();
+
+      return (
+        <div className={styles.component}>
+          <h3 className={styles.summerDays}>{days}</h3>
+        </div>
+      );
+    }
+    getCountdownDay() {
+      const currentDay = new Date();
+      const summerDay = new Date('2022-06-21');
+      const msPerDay = 24 * 60 * 60 * 1000;
+      const timeLeft = (summerDay.getTime() - currentDay.getTime());
+      const e_daysLeft = timeLeft / msPerDay;
+      let daysLeft = Math.round(e_daysLeft);
+      console.log(currentDay);
+      if (daysLeft > 365) {
+        daysLeft = daysLeft % 365;
+        return (daysLeft + ' days to summer!');
+      } else if (daysLeft == 1) {
+        return (daysLeft + ' day to summer!');
+      } else {
+        return (daysLeft + ' days to summer!');
       }
-      getCountdownDay() {
-        const currentDay = new Date();
-        const summerDay = new Date('2022-06-21');
-        const msPerDay = 24 * 60 * 60 * 1000;
-        const timeLeft = (summerDay.getTime() - currentDay.getTime());
-        const e_daysLeft = timeLeft / msPerDay;
-        let daysLeft = Math.floor(e_daysLeft);
-        console.log(currentDay);
-        if (daysLeft > 365) {
-          daysLeft = daysLeft % 365;
-          return (daysLeft + ' days to summer!');
-        } else if (daysLeft == 1) {
-          return (daysLeft + ' day to summer!');
-        } else {
-          return (daysLeft + ' days to summer!');
-        }
-      }
+    }
     
 }
 export default DaysToSummer;
